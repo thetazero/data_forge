@@ -4,8 +4,8 @@ cols = [
     column("name", "string", "The name of the person this article is about."),
     column("military_experience", "true|false",
            "If the person has military experience"),
-    column("citizienship", "list[str]",
-           "List of citizienships the person has had."),
+    column("citizenship", "list[str]",
+           "List of citizenships the person has had."),
     column("birth_date", "date",
            "The date of birth of the person, just the year, like 1948."),
 ]

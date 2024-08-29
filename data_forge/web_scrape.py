@@ -24,7 +24,8 @@ def get_raw_text(url: str) -> str:
 def get_text(url: str) -> str:
     html = get_raw_text(url)
     soup = BeautifulSoup(html, "html.parser")
-    return post_process(soup, get_domain(url))
+    res =  post_process(soup, get_domain(url))
+    return res
 
 def post_process(soup: BeautifulSoup, domain: str) -> str:
     procs = {
@@ -35,7 +36,7 @@ def post_process(soup: BeautifulSoup, domain: str) -> str:
     return soup.get_text()
 
 def proc_wikipedia(soup: BeautifulSoup) -> str:
-    div = soup.find("div", {"class": "mw-content-container"})
+    div = soup.find("div", {"id": "bodyContent"})
     if div:
         return div.get_text()
     return soup.get_text()
