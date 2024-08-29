@@ -16,3 +16,6 @@ res = forge(cols, urls)
 
 for r in res.parsed_result:
     print(r)
+
+res.to_csv("result.csv")
+res.to_json("result.json")

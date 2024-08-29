@@ -3,17 +3,26 @@ from .open_ai import extract
 from .web_scrape import get_text
 from .parse_json import parse_json
 
+import csv
+import json
 from typing import Any, NamedTuple
+
 
 class ForgeResult(NamedTuple):
     raw_result: list[str]
     parsed_result: list[dict[str, Any]]
 
-    def to_csv(self):
-        pass
+    def to_csv(self, file_path: str):
+        with open(file_path, 'w', newline='') as file:
+            writer = csv.DictWriter(
+                file, fieldnames=self.parsed_result[0].keys())
+            writer.writeheader()
+            for row in self.parsed_result:
+                writer.writerow(row)
 
-    def to_json(self):
-        pass
+    def to_json(self, file_path: str):
+        with open(file_path, 'w') as file:
+            json.dump(self.parsed_result, file)
 
 
 def forge(cols: list[column], urls: list[str]) -> ForgeResult:
@@ -22,7 +31,8 @@ def forge(cols: list[column], urls: list[str]) -> ForgeResult:
     for url in urls:
         raw_result.append(forge_url(json_prompt, url))
 
-    parsed_res: list[dict[str, Any]] = [parse_json(data) for data in raw_result]
+    parsed_res: list[dict[str, Any]] = [
+        parse_json(data) for data in raw_result]
 
     for i in range(len(parsed_res)):
         parsed_res[i]["url"] = urls[i]
