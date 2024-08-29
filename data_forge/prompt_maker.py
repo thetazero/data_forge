@@ -17,13 +17,3 @@ Note the following descriptions for each field:
 {field_joiner.join([f"{col.name}: {col.description}" for col in cols])}
 Rember not to include any other information in your answer.
     """
-
-if __name__ == "__main__":
-    cols = [
-        column("name", "string", "The name of the person."),
-        column("age", "number", "The age of the person."),
-        column("gender", "male | female", "The gender of the person."),
-        column("alive", "true | false", "If the person is currently alive, according to the source."),
-    ]
-
-    print(make_json_extract_prompt(cols))

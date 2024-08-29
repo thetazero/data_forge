@@ -17,8 +17,3 @@ def get_text(url: str):
     result = soup.get_text()
     cache.set(caller, key, result)
     return result
-
-
-if __name__ == "__main__":
-    url = "https://en.wikipedia.org/wiki/Osama_bin_Laden"
-    print(get_text(url))

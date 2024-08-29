@@ -14,5 +14,5 @@ urls = ["https://en.wikipedia.org/wiki/Osama_bin_Laden",
         "https://en.wikipedia.org/wiki/Abu_Bakar_Ba%27asyir"]
 res = forge(cols, urls)
 
-for r in res:
+for r in res.parsed_result:
     print(r)
