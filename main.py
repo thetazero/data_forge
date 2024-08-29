@@ -12,6 +12,7 @@ cols = [
            "The highest level of education the person has completed, or Unknown if it is not known."),
     column("area_of_study", "string",
            "The area of study the person has studied in."),
+    column("religion", "Christianity | Islam | Hinduism | Judaism | Buddhism | Sikhism | Other | None | Uknown", "The religion that the person identifies with, if it is something else then write it, or unknown if it is not known."),
 ]
 urls = [
     "https://en.wikipedia.org/wiki/Osama_bin_Laden",
