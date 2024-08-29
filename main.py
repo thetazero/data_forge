@@ -8,14 +8,21 @@ cols = [
            "List of citizenships the person has had."),
     column("birth_date", "date",
            "The date of birth of the person, just the year, like 1948."),
+    column("education", "Unknown | PhD | Master | Bachelor | Associate | High School | Secondary | Primary",
+           "The highest level of education the person has completed, or Unknown if it is not known."),
+    column("area_of_study", "string",
+           "The area of study the person has studied in."),
 ]
-urls = ["https://en.wikipedia.org/wiki/Osama_bin_Laden",
-        "https://en.wikipedia.org/wiki/Saleh_Al-Qaraawi",
-        "https://en.wikipedia.org/wiki/Abu_Bakar_Ba%27asyir"]
+urls = [
+    "https://en.wikipedia.org/wiki/Osama_bin_Laden",
+#     "https://en.wikipedia.org/wiki/Saleh_Al-Qaraawi",
+#     "https://en.wikipedia.org/wiki/Abu_Bakar_Ba%27asyir",
+#     "https://en.wikipedia.org/wiki/Gulbuddin_Hekmatyar",
+]
 res = forge(cols, urls)
 
 for r in res.parsed_result:
     print(r)
 
-res.to_csv("result.csv")
-res.to_json("result.json")
+res.to_csv("output/result.csv")
+res.to_json("output/result.json")

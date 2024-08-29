@@ -9,6 +9,7 @@ def extract(data: str, json_extract_prompt: str) -> str:
     cached_value = cache.get(caller, key)
     if cached_value:
         return cached_value
+    print('Cache miss')
 
     completion = client.chat.completions.create(
         model="gpt-4o-mini",
